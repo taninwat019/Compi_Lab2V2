@@ -3,11 +3,12 @@ import EventCard from '../components/EventCard.vue'
 import EventCard2 from '@/components/EventCard2.vue';
 import type { EventItem } from '@/type';
 import { type Ref, ref } from 'vue';
-import EventService from '@/services/EventService'
+import StudentService from '@/services/StudentService'
+import StudentCard from '../components/StudentCard.vue'
 
 const events: Ref<Array<EventItem>> = ref([])
 
-EventService.getEvent().then((response) =>{
+StudentService.getEvent().then((response) =>{
   events.value = response.data
 })
 </script>
@@ -15,11 +16,9 @@ EventService.getEvent().then((response) =>{
 <template>
   <h1>Events For Good</h1>
   <main class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event"></EventCard>
+    <StudentCard v-for="event in events" :key="event.id" :event="event"></StudentCard>
   </main>
-  <main class="events2">
-    <EventCard2 v-for="event in events" :key="event.id" :event="event"></EventCard2>
-  </main>
+  
 </template>
 
 <style scoped>
